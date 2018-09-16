@@ -8,6 +8,7 @@ def in_excludes(path: Path) -> bool:
     return any([part in EXCLUDES for part in path.parts])
 
 def implementation_0() -> List[Path]:
+    ''' Python Standard Library Implementation '''
     root = Path('.')
     paths = root.glob('**/*')
 
@@ -15,12 +16,13 @@ def implementation_0() -> List[Path]:
             if not in_excludes(path) and path.is_file()]
 
 def implementation_1() -> List[Path]:
+    ''' PyFunctional Implementation '''
     root = Path('.')
     paths = root.glob('**/*')
 
     def is_file(path: Path) -> bool:
         return path.is_file()
 
-    return seq(paths).filter_not(in_excludes)\
-                     .filter(is_file)\
-                     .to_list()
+    return list(seq(paths)
+                .filter_not(in_excludes)
+                .filter(is_file))
