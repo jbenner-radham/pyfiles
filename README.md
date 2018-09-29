@@ -6,7 +6,7 @@ pyfiles
 Install
 -------
 ```sh
-$ pipenv install
+$ pipenv sync
 ```
 
 License
